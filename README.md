@@ -28,7 +28,7 @@ facenet_pytorch
 ### Prepare your data:
 
  * You can download our testing data from Dropbox shared link by [here](https://www.dropbox.com/sh/fcks3k2l9xs36ze/AABlXm3FY3pMzStNrPktYKdRa?dl=0).
- * Please unzip the file to /data/.
+ * Please unzip the file to ./data/.
 
 ## Performance
 
