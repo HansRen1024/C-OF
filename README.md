@@ -52,6 +52,11 @@ If you find this work helpful for your research, please cite the following paper
       year={}
     }
 
+## References
+
+1. Zhang, K., Zhang, Z., Li, Z., & Qiao, Y. (2016). Joint face detection and alignment using multitask cascaded convolutional networks. IEEE Signal Processing Letters, 23(10), 1499-1503. [PDF](https://arxiv.org/pdf/1604.02878.pdf)
+2. Nam, H., & Han, B. (2016). Learning multi-domain convolutional neural networks for visual tracking. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 4293-4302). [PDF](https://openaccess.thecvf.com/content_cvpr_2016/papers/Nam_Learning_Multi-Domain_Convolutional_CVPR_2016_paper.pdf)
+
 ## Acknowledgement
 
 We used pretrained model and relevant APIs from facenet-pytorch (https://github.com/timesler/facenet-pytorch). Thanks for their excellent work very much.
