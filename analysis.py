@@ -3,96 +3,6 @@ import json, os, math
 import matplotlib.pyplot as plt
 import numpy as np
 
-def precision_plot():
-    gt_bboxes = get_gt(root_path)
-    def precision(bb1, bb2, thres):
-        assert len(bb1) == len(bb2)
-        count = 0
-        p_count = 0
-        for idx in range(len(bb1)):
-            if 0 in bb1[idx] or 0 in bb2[idx]: continue
-            cx_bb1 = bb1[idx][0] + bb1[idx][2] * 0.5
-            cy_bb1 = bb1[idx][1] + bb1[idx][3] * 0.5
-
-            cx_bb2 = bb2[idx][0] + bb2[idx][2] * 0.5
-            cy_bb2 = bb2[idx][1] + bb2[idx][3] * 0.5
-
-            dis = ((cx_bb1 - cx_bb2) ** 2 + (cy_bb1 - cy_bb2) ** 2) ** 0.5
-            if dis < thres:
-                p_count += 1
-            count += 1
-        return round(p_count / count, 6)
-    thres = 30
-    for file in file_set:
-        with open(root_path + file, 'r', encoding='utf-8') as outf:
-            lines = outf.readlines()
-        data = json.loads(lines[0].strip('\r\n'))
-        bboxes = data['bboxes']
-        precisions = []
-        for i in range(thres):
-            precisions.append(precision(gt_bboxes, bboxes, i))
-        plt.plot(list(range(thres)), precisions, label=file.split('.')[0])
-    plt.xlabel('Location error threshold')
-    plt.ylabel('Precision')
-    plt.title('Precision plots of OPE')
-    plt.legend()
-    plt.show()
-
-def success_plot():
-    gt_bboxes = get_gt(root_path)
-    def overlap_ratio(rect1, rect2):
-        """
-        Compute overlap ratio between two rects
-        - rect: 1d array of [x,y,w,h] or
-                2d array of N x [x,y,w,h]
-        """
-        if isinstance(rect1,list):
-            rect1 = np.array(rect1)
-        if isinstance(rect2,list):
-            rect2 = np.array(rect2)
-        if rect1.ndim == 1:
-            rect1 = rect1[None, :]
-        if rect2.ndim == 1:
-            rect2 = rect2[None, :]
-
-        left = np.maximum(rect1[:, 0], rect2[:, 0])
-        right = np.minimum(rect1[:, 0] + rect1[:, 2], rect2[:, 0] + rect2[:, 2])
-        top = np.maximum(rect1[:, 1], rect2[:, 1])
-        bottom = np.minimum(rect1[:, 1] + rect1[:, 3], rect2[:, 1] + rect2[:, 3])
-
-        intersect = np.maximum(0, right - left) * np.maximum(0, bottom - top)
-        union = rect1[:, 2] * rect1[:, 3] + rect2[:, 2] * rect2[:, 3] - intersect
-        iou = np.clip(intersect / union, 0, 1)
-        return iou
-    def success(bb1, bb2, thres):
-        assert len(bb1) == len(bb2)
-        count = 0
-        p_count = 0
-        for idx in range(len(bb1)):
-            if 0 in bb1[idx] or 0 in bb2[idx]: continue
-            dis = overlap_ratio(bb1[idx], bb2[idx])
-            if dis > thres:
-                p_count += 1
-            count += 1
-        return round(p_count / count, 6)
-    for file in file_set:
-        with open(root_path + file, 'r', encoding='utf-8') as outf:
-            lines = outf.readlines()
-        data = json.loads(lines[0].strip('\r\n'))
-        bboxes = data['bboxes']
-        success_list = []
-        x = []
-        for i in range(1,11):
-            i = i/10
-            x.append(i)
-            success_list.append(success(gt_bboxes, bboxes, i))
-        plt.plot(x, success_list, label=file.split('.')[0])
-    plt.xlabel('Overlap threshold')
-    plt.ylabel('Success rate')
-    plt.title('Success plots of OPE')
-    plt.legend()
-    plt.show()
-
 def stability_compute():
     num = 0
     for file in file_set:
@@ -126,6 +36,7 @@ def stability_compute():
         num+=1
         if num in [5, 10, 15]:
             print("")
+            
 def point_plot(one_graph):
     p_set = ['top-left', 'top-right', 'bottom-right', 'bottom-left', 'center']
     p = p_set[4]
@@ -238,7 +149,7 @@ if __name__=='__main__':
     file_set.sort()
     fontsize=20
     # file_set.remove("GT.json")
-    # precision_plot()
-    # success_plot()
-    # stability_compute()
+    # stability_compute()    # success_plot()
+153
+
     point_plot(one_graph=True)
