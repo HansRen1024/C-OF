@@ -5,7 +5,7 @@ import torch, mmcv, cv2, time, json, os
 import numpy as np
 from torch.nn.functional import interpolate
 
-def test_mtchh_img():
+def test_mtcnn_img():
     mtcnn = MTCNN(image_size=640, thresholds=[0.8, 0.8, 0.6], min_face_size=40)
     img = Image.open('./test_1.jpg')
     boxes, _ = mtcnn.detect(img)
@@ -14,7 +14,7 @@ def test_mtchh_img():
         draw.rectangle(box.tolist(), outline=(255, 0, 0), width=6)
     img.show()
 
-def test_mtchh_video():
+def test_mtcnn_video():
     device = torch.device('cuda')
     mtcnn = MTCNN(image_size=320, thresholds=[0.8, 0.8, 0.6], min_face_size=100, device=device)
     video = mmcv.VideoReader('video2.mp4')
@@ -301,84 +301,6 @@ def cof_test():
     #     fout.write(json.dumps(dat))
     #     fout.write('\n')
 
-def save_gt_result(tb50_set,root_path):
-    file_out = 'results/GT.json'
-    with open(file_out, 'w', encoding='utf-8') as fout:
-        for dir_name in tb50_set:
-            path = root_path + '/TB-50/' + dir_name
-            gt_file = path + '/groundtruth_rect.txt'
-            with open(gt_file, 'r') as f:
-                gt_lines = f.readlines()
-            dat = dict(dir_name=dir_name, bboxes=[])
-            for line in gt_lines:
-                line = line.strip().replace('\t', ',').split(',')
-                bbox = [int(x) for x in line]
-                dat['bboxes'].append(bbox)
-            fout.write(json.dumps(dat))
-            fout.write('\n')
-
-def save_cof_result(tb50_set,root_path):
-    file_out = 'results/BlurFace/COF.json'
-    device = torch.device('cuda')
-    with open(file_out, 'w', encoding='utf-8') as fout:
-        for dir_name in tb50_set:
-            cof_obj = cof(device)
-            path = root_path + '/TB-50/' + dir_name + '/img/'
-            img_lines = os.listdir(path)
-            img_lines.sort()
-            dat = dict(dir_name=dir_name, bboxes=[])
-            for line in img_lines:
-                img_path = path + line
-                img = cv2.imread(img_path)
-                try:
-                    cof_obj.detect(img)
-                    dat['bboxes'].append([cof_obj.result.x, cof_obj.result.y, cof_obj.result.w, cof_obj.result.h])
-                    cv2.rectangle(img,
-                                  (cof_obj.result.x, cof_obj.result.y),
-                                  (cof_obj.result.x + cof_obj.result.w, cof_obj.result.y + cof_obj.result.h),
-                                  (255, 0, 0), 2)
-                    cv2.imshow(dir_name, img)
-                    k = cv2.waitKey(30)
-                    if k == 27:
-                        cv2.destroyAllWindows()
-                        return
-                except:
-                    pass
-            cv2.destroyAllWindows()
-            fout.write(json.dumps(dat))
-            fout.write('\n')
-            del cof_obj
-
-def save_mtcnn_result(tb50_set,root_path):
-    file_out = 'results/mtcnn.json'
-    with open(file_out, 'w', encoding='utf-8') as fout:
-        for dir_name in tb50_set:
-            mtcnn = MTCNN(image_size=1080, thresholds=[0.8, 0.8, 0.6], min_face_size=40)
-            path = root_path + '/TB-50/' + dir_name + '/img/'
-            img_lines = os.listdir(path)
-            img_lines.sort()
-            dat = dict(dir_name=dir_name, bboxes=[])
-            for line in img_lines:
-                img_path = path + line
-                img = cv2.imread(img_path)
-                boxes, _ = mtcnn.detect(img)
-                if boxes is None:
-                    dat['bboxes'].append([0,0,0,0])
-                else:
-                    for bb in boxes:
-                        dat['bboxes'].append([int(bb[0]), int(bb[1]), int(bb[2]-bb[0]), int(bb[3]-bb[1])])
-                        cv2.rectangle(img,
-                                      (int(bb[0]), int(bb[1])),
-                                      (int(bb[2]), int(bb[3])),
-                                      (255, 0, 0), 2)
-                        cv2.imshow(dir_name, img)
-                        k = cv2.waitKey(30)
-                        if k == 27:
-                            cv2.destroyAllWindows()
-                            return
-            fout.write(json.dumps(dat))
-            fout.write('\n')
-
 def save_cof_result_video(root_path):
     device = torch.device('cuda')
     file_list = os.listdir(root_path)
@@ -437,17 +359,6 @@ def save_mtcnn_result_video(root_path):
             fout.write('\n')
         del mtcnn
 
-def cof_experiment():
-    tb50_set = ['BlurFace']
-    root_path = 'data/human_static/'
-    # save_gt_result(tb50_set,root_path)
-
-    # save_cof_result(tb50_set,root_path)
-    # save_mtcnn_result(tb50_set, root_path)
-
-    # save_cof_result_video(root_path)
-    save_mtcnn_result_video(root_path)
 if __name__=='__main__':
     cof_test()
     # test_mtchh_video()
-    # cof_experiment()
