@@ -33,6 +33,12 @@ facenet_pytorch
 
 ## Performance
 
+#### Stability
+
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/imgs/C-OF_stability.png"/></div>
+
+#### Smoothness
+
 <div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_camera_center.png"/></div>
 
 <div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_human_center.png"/></div>
