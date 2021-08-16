@@ -25,10 +25,10 @@ facenet_pytorch
 
 ## How to use
 
-<!--  * You can download our testing data from Dropbox shared link by [here](https://www.dropbox.com/sh/fcks3k2l9xs36ze/AABlXm3FY3pMzStNrPktYKdRa?dl=0). -->
-<!--  * Please unzip the file to ./data/. -->
-<!--  * Run cof_main.py. -->
- * You can use video or camera flames as inputs of our method. If you use local video, please put it in a proper place and amend the path in line 269 in cof_main.py, or use line 272-274 for camera flames.
+ * You can download our testing data from Dropbox shared link by [here](https://www.dropbox.com/sh/fcks3k2l9xs36ze/AABlXm3FY3pMzStNrPktYKdRa?dl=0).
+ * Please unzip the file to ./data/.
+ * You can use your video or camera flames as inputs of our method. If you use local video, please put it in a proper place and amend the path in line 269 in cof_main.py, or use line 272-274 for camera flames.
+ * Run cof_main.py.
  * C++ version using NCNN is available [here](https://github.com/HandsomeHans/Face-Tracking-Using-CNN-and-Optical-Flow).
 
 ## Performance
