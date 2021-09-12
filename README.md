@@ -5,7 +5,7 @@ Pytorch implementation for paper: A Real-Time and Long-Term Face Tracking Method
 
 The development of Internet of Things (IoT) stimulates many research works related to Multimedia Communication Systems (MCS), such as human face detection and tracking. This trend drives numerous progressive methods. Among these methods, deep learning based method can spot face patch in an image effectively and accurately. Many people consider the face tracking as face detection, but they are two different techniques. Face detection focuses on single image, whose shortcoming is obvious, such as unstable and unsmooth face position when adopted on a sequence of continuous images; computing expensive due to its heavily relying on Convolutional Neural Networks (CNN) and limited detection performance on edge device. To overcome these defects, this paper proposes a novel face tracking strategy by combining CNN and Optical Flow, namely C-OF, which achieves an extremely fast, stable and long-term face tracking system. Two key things for commercial applications are the stability and smoothness of face positions in a sequence of image frames, which can provide more probability for face biological signal extracting, silent face anti-spoofing and facial expression analysis in the fields of IoT-based MCS. Our method captures face patterns in every two consequent frames via optical flow to get rid of the unstable and unsmooth problems. Moreover, an innovative metric for measuring the stability and smoothness of face motion is designed and adopted in our experiments. The experimental results illustrate that our proposed C-OF outperforms both face detection and object tracking methods.
 
-<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/imgs/C-OF-procedure.png"/></div>
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/imgs/C-OF-procedure.png" width=800/></div>
 
 ## Requirements
 
@@ -41,17 +41,17 @@ facenet_pytorch
 
 #### Stability
 
-<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/imgs/C-OF_stability.png"/></div>
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/imgs/C-OF_stability.png" width=800/></div>
 
 #### Smoothness
 
 <div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_camera_center.png" width=500/></div>
 
-<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_human_center.png"/></div>
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_human_center.png" width=500/></div>
 
-<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_illumination_center.png"/></div>
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_illumination_center.png" width=500/></div>
 
-<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/static_human_center.png"/></div>
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/static_human_center.png" width=500/></div>
 
 ## Citation
 
