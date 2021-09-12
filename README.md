@@ -31,6 +31,12 @@ facenet_pytorch
  * Run cof_main.py.
  * C++ version using NCNN is available [here](https://github.com/HandsomeHans/Face-Tracking-Using-CNN-and-Optical-Flow).
 
+## Example
+
+![image](https://github.com/HandsomeHans/Face-Tracking-Based-on-OpenTLD-and-RNet/blob/master/example/saved_1.gif)
+
+![image](https://github.com/HandsomeHans/Face-Tracking-Based-on-OpenTLD-and-RNet/blob/master/example/saved_.gif)
+
 ## Performance
 
 #### Stability
