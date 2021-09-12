@@ -45,13 +45,13 @@ facenet_pytorch
 
 #### Smoothness
 
-<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_camera_center.png" width=500/></div>
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_camera_center.png" width=800/></div>
 
-<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_human_center.png" width=500/></div>
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_human_center.png" width=800/></div>
 
-<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_illumination_center.png" width=500/></div>
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/active_illumination_center.png" width=800/></div>
 
-<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/static_human_center.png" width=500/></div>
+<div align=center><img src="https://github.com/HandsomeHans/C-OF/blob/main/results/point_route/static_human_center.png" width=800/></div>
 
 ## Citation
 
