@@ -57,12 +57,13 @@ facenet_pytorch
 
 If you find this work helpful for your research, please cite the following paper:
 
-    @article{,
-      title={},
-      author={},
-      journal={},
-      pages={},
-      year={}
+    @article{ren2021real,
+      title={A Real-Time and Long-Term Face Tracking Method Using Convolutional Neural Network and Optical Flow in IoT-Based Multimedia Communication Systems},
+      author={Ren, Hanchi and Hu, Yi and Myint, San Hlaing and Hou, Kun and Zhang, Xiuyu and Zuo, Min and Zhang, Chi and Zhang, Qingchuan and Li, Haipeng},
+      journal={Wireless Communications and Mobile Computing},
+      volume={2021},
+      year={2021},
+      publisher={Hindawi}
     }
 
 ## References
