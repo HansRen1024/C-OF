@@ -33,9 +33,9 @@ facenet_pytorch
 
 ## Example
 
-![image](https://github.com/HansRen1024/Face-Tracking-Based-on-OpenTLD-and-RNet/blob/master/example/saved_1.gif)
+![image](https://github.com/HansRen1024/Face-Tracking-Using-CNN-and-Optical-Flow/blob/master/example/saved_.gif)
 
-![image](https://github.com/HansRen1024/Face-Tracking-Based-on-OpenTLD-and-RNet/blob/master/example/saved_.gif)
+![image](https://github.com/HansRen1024/Face-Tracking-Using-CNN-and-Optical-Flow/blob/master/example/saved_1.gif)
 
 ## Performance
 
