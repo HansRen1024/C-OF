@@ -184,8 +184,8 @@ class optical_flow_tracking:
             d = []
             for i in range(npoints):
                 for j in range(i+1, npoints):
-                    d.append((pow(self.points2[i][0][0] - self.points2[j][0][0], 2) + pow(self.points2[i][0][1] - self.points2[j][0][1], 2))/
-                             (pow(self.points1[i][0][0] - self.points1[j][0][0], 2) + pow(self.points1[i][0][1] - self.points1[j][0][1], 2)))
+                    d.append(np.sqrt(pow(self.points2[i][0][0] - self.points2[j][0][0], 2) + pow(self.points2[i][0][1] - self.points2[j][0][1], 2))/
+                             np.sqrt(pow(self.points1[i][0][0] - self.points1[j][0][0], 2) + pow(self.points1[i][0][1] - self.points1[j][0][1], 2)))
             s = np.median(d)
         else:
             s = 1.0
