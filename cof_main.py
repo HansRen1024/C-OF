@@ -149,7 +149,7 @@ class optical_flow_tracking:
         k = 0
         for i in range(self.points2.shape[0]):
             if not status[i]: continue
-            if similarity[i] > simmed:
+            if similarity[i] >= simmed:
                 self.points1[k] = self.points1[i]
                 self.points2[k] = self.points2[i]
                 FBerror[k] = FBerror[i]
